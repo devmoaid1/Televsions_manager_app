@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <title>DELETE television via id</title>
+   <meta charset="utf-8">
+</head>
+
+<body>
+
+   <script src="js/jquery-3.2.1.min.js"></script>
+
+   <script>
+
+      $(function () {
+
+         //CONTACTS CRUD - DELETE contact via id
+         //*
+         $.ajax({
+            type: "delete",
+            url: 'api/deletetelevision.php?televid=' + 1,
+            dataType: "json",
+            success: function (data) {
+
+               if (data.deleteStatus) {
+
+                  alert("contact deletion successful");
+
+               }
+               else {
+
+                  alert("contact deletion failed - please try again: " + data.error)
+               }
+
+            },
+            error: function () {
+               console.log("error");
+            }
+         });
+         //*/  
+
+      });
+
+   </script>
+</body>
+
+</html>

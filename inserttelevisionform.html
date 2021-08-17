@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <title>POST/insert television</title>
+   <meta charset="utf-8">
+
+   <style>
+      #body1 {
+         width: 15%;
+         height: 20%;
+         margin-top: 40px;
+         margin-left: 40px;
+         background-color: #4CAF50;
+         box-shadow: blanchedalmond;
+         padding-left: 30px;
+         border-radius: 3pc;
+         padding-top: 10px;
+
+
+      }
+
+      input[type=text]:focus {
+         border: 3px solid #555;
+      }
+
+      input[type=submit] {
+         background-color: white;
+
+
+         border: none;
+         color: #4CAF50;
+         padding: 16px 32px;
+         text-decoration: none;
+         margin: 4px 2px;
+         cursor: pointer;
+         font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+         border-radius: 3pc;
+         margin-left: 20px;
+      }
+
+      label {
+         font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+         color: white;
+      }
+
+      h1 {
+         font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+         padding-left: 30px;
+      }
+   </style>
+</head>
+
+<body>
+   <h1>Insert Television</h1>
+   <div id="body1">
+
+      <form id="form1" name="form1" method="post">
+         <label for="type">Type:</label><br>
+         <input type="text" id="type" name="type" required><br><br>
+
+         <label for="company">Company:</label><br>
+         <input type="text" id="company" name="company" required><br><br>
+
+         <label for="size">Size:</label><br>
+         <input type="text" id="size" name="size" required><br><br>
+
+         <label for="price">price:</label><br>
+         <input type="text" id="price" name="price" required><br><br>
+
+         <input type="submit" value="Submit">
+      </form>
+   </div>
+
+
+
+   <script src="js/jquery-3.2.1.min.js"></script>
+   <script>
+
+      $(function () {
+
+
+         $("#form1").submit(function (event) {
+
+            event.preventDefault();
+
+            //use this technique for ajax data if not using RESTFul
+            //NOTE: this will capture name attribute in not id in html form
+            var formData = $(this).serialize();
+            console.log(formData);
+
+            //*
+            $.ajax({
+               type: "post",
+               url: 'api/inserttelevision.php',
+               data: formData,
+               dataType: "json",
+               success: function (data) {
+
+                  if (data.insertStatus) {
+
+                     alert("contact insertion successful");
+
+                  }
+                  else {
+
+                     alert("contact insertion failed - please try again: " + data.errorMessage)
+                  }
+               },
+               error: function () {
+                  console.log("error");
+               }
+            });
+            //*/
+
+         });
+
+      });
+
+   </script>
+</body>
+
+</html>

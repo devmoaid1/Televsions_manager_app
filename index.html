@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+/* Name: Moaid Mohamed */
+/* Matric No: A17CS4025*/
+
+<head>
+	<title>AJAX CRUD</title>
+	<meta charset="utf-8">
+	<style>
+		#container {
+
+			width: 50%;
+			height: 50%;
+			margin-top: 60px;
+			margin-left: 40px;
+
+
+		}
+
+		table {
+			border: 1px solid black;
+			border-collapse: collapse;
+
+		}
+
+		th {
+			background-color: #4CAF50;
+			color: white;
+			font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+		}
+
+		td {
+
+			font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+
+		}
+
+		table,
+		th,
+		td {
+			border: 0.5px solid black;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="container">
+
+		<table id="table1">
+			<thead>
+				<tr>
+					<th>AJAX Type</th>
+					<th>Table</th>
+					<th>DB operation</th>
+
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>
+						<a href="getalltelevisions.html">1 - GET</a><br /><br />
+						GET <b>/televisions</b><br /><br />
+					</td>
+					<td>televisions</td>
+					<td>SELECT all televisions </td>
+
+				</tr>
+
+				<tr>
+					<td>
+						<a href="inserttelevisionform.html">3 - POST (with form)</a><br /><br />
+						POST <b>/televisions</b><br /><br />
+					</td>
+					<td>televisions</td>
+					<td>INSERT television</td>
+
+				</tr>
+				<tr>
+					<td>
+						<a href="updatetelevisionform.html">4 - PUT (with form)</a><br /><br />
+						PUT <b>/televisions/{id}</b><br /><br />
+					</td>
+					<td>televisions</td>
+					<td>UPDATE television via id</td>
+
+				</tr>
+
+				<tr>
+					<td>
+						<a href="deletetelevision.html">6 - DELETE</a><br /><br />
+						DELETE <b>/televisions/{id}</b><br /><br />
+					</td>
+					<td>televisions</td>
+					<td>DELETE television via id</td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+
+	<script src="js/jquery-3.2.1.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <title>POST/insert television</title>
+   <meta charset="utf-8">
+</head>
+
+<body>
+
+   <form id="form1" name="form1" method="post">
+      <label for="type">Type:</label><br>
+      <input type="text" id="type" name="type" required><br><br>
+
+      <label for="company">Company:</label><br>
+      <input type="text" id="company" name="company" required><br><br>
+
+      <label for="size">Size:</label><br>
+      <input type="text" id="size" name="size" required><br><br>
+
+      <label for="price">price:</label><br>
+      <input type="text" id="price" name="price" required><br><br>
+
+      <input type="submit" value="Submit">
+   </form>
+
+   <script src="js/jquery-3.2.1.min.js"></script>
+   <script>
+
+      $(function () {
+
+
+         $("#form1").submit(function (event) {
+
+            event.preventDefault();
+
+            //use this technique for ajax data if not using RESTFul
+            //NOTE: this will capture name attribute in not id in html form
+            var formData = $(this).serialize();
+            console.log(formData);
+
+            //*
+            $.ajax({
+               type: "post",
+               url: 'api/inserttelevision.php',
+               data: formData,
+               dataType: "json",
+               success: function (data) {
+
+                  if (data.insertStatus) {
+
+                     alert("contact insertion successful");
+
+                  }
+                  else {
+
+                     alert("contact insertion failed - please try again: " + data.errorMessage)
+                  }
+               },
+               error: function () {
+                  console.log("error");
+               }
+            });
+            //*/
+
+         });
+
+      });
+
+   </script>
+</body>
+
+</html>

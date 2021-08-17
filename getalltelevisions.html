@@ -1,0 +1,131 @@
+`
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <title>GET all televisions</title>
+   <meta charset="utf-8">
+   <style>
+      #body1 {
+         width: 50%;
+         height: 50%;
+         margin-top: 40px;
+         margin-left: 40px;
+         background-color: white;
+         box-shadow: blanchedalmond;
+
+      }
+
+      h1 {
+         font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+         font-style: italic;
+      }
+
+      table {
+         border: 1px solid black;
+         border-collapse: collapse;
+         width: 100%;
+         height: 60%;
+
+      }
+
+      th {
+         background-color: #4CAF50;
+         color: white;
+         font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+         padding: 8px;
+      }
+
+
+      td {
+         text-align: center;
+         padding-bottom: 3px;
+         padding-top: 3px;
+         text-align: left;
+         font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+         padding: 8px;
+      }
+
+      tr:nth-child(even) {
+         background-color: #f2f2f2;
+      }
+
+      tr:hover {
+         background-color: #ddd;
+      }
+
+      table,
+      th,
+      td {
+         border: 0.5px solid black;
+      }
+   </style>
+</head>
+
+<body>
+
+   <div id="body1">
+
+      <h1>List of all Televisions</h1>
+      <table border="1" id="tbl">
+         <thead>
+            <tr>
+               <th>Index</th>
+               <th>type</th>
+               <th>company</th>
+               <th>size</th>
+               <th>price</th>
+
+
+            </tr>
+         </thead>
+         <tbody>
+         </tbody>
+      </table>
+   </div>
+
+   <script src="js/jquery-3.2.1.min.js"></script>
+   <script>
+      $(function () {
+
+         //CONTACTS CRUD - GET all contacts
+         //*
+         $.ajax({
+            type: "get",
+            url: 'api/getalltelevisions.php',
+            dataType: "json",
+            success: function (data) {
+               var index = 0;
+
+               for (var i in data) {
+
+                  index = parseInt(index) + 1;
+
+
+                  var status = "";
+                  if (data[i].status == 0)
+                     status = "Inactive";
+                  else
+                     status = "Active";
+
+                  $("#tbl tbody").append("<tr>" +
+                     "   <td>" + index + "</td>" +
+                     "   <td>" + data[i].type + "</td>" +
+                     "   <td>" + data[i].company + "</td>" +
+                     "   <td>" + data[i].size + "</td>" +
+                     "   <td>" + data[i].price + "</td>" +
+
+                     "</tr>");
+               }
+
+            },
+            error: function () {
+               console.log("error");
+            }
+         });
+         //*/        
+      });
+   </script>
+</body>
+
+</html>
